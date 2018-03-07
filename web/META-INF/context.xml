@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="jdbc/mysql" auth="Container" type="javax.sql.DataSource"
+    driverClassName="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://127.0.0.1:3306/kgcnews"
+    username="root" password="1234"
+    maxTotal="20" minIdle="2" maxIdle="8" maxWaitMillis="10000"/>
+    <!--
+    <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+    maxTotal="8" maxIdle="8" maxWaitMillis="-1"
+    name="jdbc/news" password="1234" type="javax.sql.DataSource"
+    url="jdbc:mysql://127.0.0.1:3306/kgcnews" username="root"/>
+     -->
+</Context>

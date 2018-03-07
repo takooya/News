@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>doAddNews</servlet-name>
+        <servlet-class>cn.kgc.web.servlet.DoAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>doLoginUser</servlet-name>
+        <servlet-class>cn.kgc.web.servlet.DoLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>doAddNews</servlet-name>
+        <url-pattern>/servlet/doAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>doLoginUser</servlet-name>
+        <url-pattern>/servlet/doLogin</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>dealCodeToUtf8</filter-name>
+        <filter-class>cn.kgc.web.filter.dealCodeToUtf8</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>dealCodeToUtf8</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>adminVisit</filter-name>
+        <filter-class>cn.kgc.web.filter.adminVisit</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>adminVisit</filter-name>
+        <url-pattern>/pages/admin/*</url-pattern>
+    </filter-mapping>
+</web-app>
