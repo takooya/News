@@ -28,15 +28,15 @@
     <div class="login-box">
 
         <%
-            UserBean user=(UserBean) session.getAttribute("user");
+            UserBean user = (UserBean) session.getAttribute("user");
         %>
         <c:if test="${empty sessionScope.user}">
-          <form target="upFrame" id="loginFrm" name="loginFrm"
-              action="${pageContext.request.contextPath}/servlet/doLogin" method="post">
-            <label>用户名</label><input type="text" name="uname" id="uname"/>
-            <label>密码</label><input type="password" name="upassword" id="upassword"/>
-            <input type="button" onclick="available();" value="登录"/>
-          </form>
+            <form target="upFrame" id="loginFrm" name="loginFrm"
+                  action="${pageContext.request.contextPath}/servlet/doLogin" method="post">
+                <label>用户名</label><input type="text" name="uname" id="uname"/>
+                <label>密码</label><input type="password" name="upassword" id="upassword"/>
+                <input type="button" onclick="available();" value="登录"/>
+            </form>
         </c:if>
         <c:if test="${not empty sessionScope.user}">
             <h1 style="display:inline;">欢迎你${sessionScope.user.userName}</h1>

@@ -1,5 +1,7 @@
 package cn.kgc.dao;
 
+import cn.kgc.util.ConfigManager;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -10,47 +12,45 @@ public class Connect {
     public Connection conn;
     public PreparedStatement preSta;
     public ResultSet rstSet;
-    private int ConnectionCount=0;
+    private int ConnectionCount = 0;
 
     //获得JDBC的连接
     public boolean getConnection() {
         //JDBC方式连接数据库
-        /*boolean judgeConn = false;
+        boolean judgeConn = false;
         try {
-            String forName = "com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://127.0.0.1:3306/kgcnews";
-            String username = "root";
-            String password = "1234";
+            ConfigManager instance = ConfigManager.getInstance();
+            String forName = instance.getString("jdbc.driver_class");
+            String url = instance.getString("jdbc.connection.url");
+            String username = instance.getString("jdbc.connection.username");
+            String password = instance.getString("jdbc.connection.password");
             Class.forName(forName);
             conn = DriverManager.getConnection(url, username, password);
             judgeConn = true;
-            System.out.println(this.getClass().getSimpleName()+"getConnection:");
+            System.out.println(this.getClass().getSimpleName() + "getConnection:");
             System.out.println("**********JDBC-connect**********");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            judgeConn = false;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            judgeConn = false;
-        }
-        return judgeConn;*/
-
-        //JNDI方式连接数据库
-        boolean judgeConn = false;
-        try {
-            Context context = new InitialContext();
-            DataSource dataSource=(DataSource)context.lookup("java:comp/env/jdbc/news"); //引用数据源
-            conn=dataSource.getConnection();
-            ConnectionCount++;
-            judgeConn=true;
-        } catch (NamingException e) {
-            e.printStackTrace();
-            judgeConn = false;
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
             judgeConn = false;
         }
         return judgeConn;
+
+        /** JNDI方式连接数据库
+         boolean judgeConn = false;
+         try {
+         Context context = new InitialContext();
+         DataSource dataSource=(DataSource)context.lookup("java:comp/env/jdbc/news"); //引用数据源
+         conn=dataSource.getConnection();
+         ConnectionCount++;
+         judgeConn=true;
+         } catch (NamingException e) {
+         e.printStackTrace();
+         judgeConn = false;
+         } catch (SQLException e) {
+         e.printStackTrace();
+         judgeConn = false;
+         }
+         return judgeConn;*/
     }
 
     //查询数据库
@@ -66,8 +66,8 @@ public class Connect {
                 e.printStackTrace();
                 rstSet = null;
             }
-        }else{
-            rstSet=null;
+        } else {
+            rstSet = null;
         }
         return rstSet;
     }
@@ -107,8 +107,8 @@ public class Connect {
     }
 
     private void judgeConnectionCount() {
-        if(ConnectionCount>1||ConnectionCount<-1){
-            System.err.println("Connect.judgeConnectionCount\t现在连接数为:"+ConnectionCount);
+        if (ConnectionCount > 1 || ConnectionCount < -1) {
+            System.err.println("Connect.judgeConnectionCount\t现在连接数为:" + ConnectionCount);
         }
     }
 }

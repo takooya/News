@@ -6,6 +6,7 @@
 <jsp:useBean id="myPage" class="cn.kgc.util.Paging"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="main-content-right">
     <!--各专题的新闻列表-->
     <div class="main-text-box">
@@ -33,7 +34,7 @@
                     <input type="hidden" name="currentPage" id="currentPage" value="${myPage.currentPage}"/>
                     <ul class="news-list-ul clearfix">
                         <c:forEach var="newsDetail" items="${list}" varStatus="status">
-                            <li <c:if test="${status.count%5==0||status.count==list.size()}">class='li-line'</c:if>>
+                            <li <c:if test="${status.count%5==0||status.count==fn:length(list)}">class='li-line'</c:if>>
                                 <span>${newsDetail.createDate}</span>
                                 <a href="/pages/common/newsDetail.jsp?id=${newsDetail.id}">${newsDetail.title}</a>
                             </li>

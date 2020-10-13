@@ -9,23 +9,23 @@
 </head>
 <body>
 <form action="index.jsp" method="post">
-<!--页面顶部,静态包含-->
-<jsp:include page="/pages/common/pageTop.jsp"></jsp:include>
-<!--d页面主体-->
-<div id="content" class="main-content clearfix">
-    <!--主体的的左边部分,动态包含--><%--<jsp:include page="pages/common/pageLeft.jsp"></jsp:include>--%>
-    <div class="main-content-left">
-        <iframe name="leftFrame" style="WIDTH: 100%; HEIGHT: 800px" src="/pages/common/pageLeft.jsp" frameborder=0>
-        </iframe>
+    <!--页面顶部,静态包含-->
+    <jsp:include page="/pages/common/pageTop.jsp"></jsp:include>
+    <!--d页面主体-->
+    <div id="content" class="main-content clearfix">
+        <!--主体的的左边部分,动态包含--><%--<jsp:include page="pages/common/pageLeft.jsp"></jsp:include>--%>
+        <div class="main-content-left">
+            <iframe name="leftFrame" style="WIDTH: 100%; HEIGHT: 800px" src="/pages/common/pageLeft.jsp" frameborder=0>
+            </iframe>
+        </div>
+        <!--页面主体的右部，包括新闻的列表和评论内容,动态包含 --><%--<jsp:include page="pages/pageRight.jsp"></jsp:include>--%>
+        <div class="main-content-right">
+            <iframe name="rightFrame" style="WIDTH: 100%; HEIGHT: 800px" src="/pages/pageRight.jsp" frameborder=0>
+            </iframe>
+        </div>
     </div>
-    <!--页面主体的右部，包括新闻的列表和评论内容,动态包含 --><%--<jsp:include page="pages/pageRight.jsp"></jsp:include>--%>
-    <div class="main-content-right">
-        <iframe name="rightFrame" style="WIDTH: 100%; HEIGHT: 800px" src="/pages/pageRight.jsp" frameborder=0>
-        </iframe>
-    </div>
-</div>
-<!--页面底部,静态包含-->
-<jsp:include page="/pages/common/pageBottom.jsp"></jsp:include>
+    <!--页面底部,静态包含-->
+    <jsp:include page="/pages/common/pageBottom.jsp"></jsp:include>
 </form>
 </body>
 </html>
