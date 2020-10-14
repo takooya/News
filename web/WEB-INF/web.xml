@@ -7,18 +7,20 @@
         <servlet-name>doAddNews</servlet-name>
         <servlet-class>cn.kgc.web.servlet.DoAdd</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>doAddNews</servlet-name>
+        <url-pattern>/servlet/doAdd</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>doLoginUser</servlet-name>
         <servlet-class>cn.kgc.web.servlet.DoLogin</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>doAddNews</servlet-name>
-        <url-pattern>/servlet/doAdd</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>doLoginUser</servlet-name>
         <url-pattern>/servlet/doLogin</url-pattern>
     </servlet-mapping>
+
     <filter>
         <filter-name>dealCodeToUtf8</filter-name>
         <filter-class>cn.kgc.web.filter.dealCodeToUtf8</filter-class>

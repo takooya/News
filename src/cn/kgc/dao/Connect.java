@@ -2,10 +2,6 @@ package cn.kgc.dao;
 
 import cn.kgc.util.ConfigManager;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.*;
 
 public class Connect {
@@ -16,6 +12,7 @@ public class Connect {
 
     //获得JDBC的连接
     public boolean getConnection() {
+
         //JDBC方式连接数据库
         boolean judgeConn = false;
         try {

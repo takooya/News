@@ -8,15 +8,12 @@
 <%--<base id="base"  target="rightFrame"/>--%>
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css"/>
 <style type="text/css">
-<!--
-
--->
 </style>
 </head>
 
 <body>
 <!--页面顶部-->
-<jsp:include page="/pages/common/pageTop.jsp"></jsp:include>
+<jsp:include page="/pages/common/pageTop.jsp"/>
 <%--<div class="main-top">
 	<iframe name="upFrame" style="WIDTH: 100%; HEIGHT: 100%" src="<%=request.getContextPath()%>/pages/common/mainTop.jsp" frameborder=0>
 	</iframe>
@@ -35,6 +32,6 @@
 	</div>
 </div>
 <!--页面底部-->
-<jsp:include page="/pages/common/pageBottom.jsp"></jsp:include>
+<jsp:include page="/pages/common/pageBottom.jsp"/>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <jsp:useBean id="newsService" class="cn.kgc.service.impl.NewsServiceImpl"></jsp:useBean>
 <div id="header">
     <div class="main-top">
-        <iframe name="upFrame" style="WIDTH: 100%; HEIGHT: 100%" src="<%=request.getContextPath()%>/pages/common/mainTop.jsp" frameborder=0>
+        <iframe name="upFrame" style="WIDTH: 100%; HEIGHT: 100%"
+                src="<%=request.getContextPath()%>/pages/common/mainTop.jsp" frameborder=0>
         </iframe>
     </div>
     <%--<div class="main-top">
@@ -38,9 +39,14 @@
         //3,user为管理员,显示admin.jsp
         //session.getAttribute("user");
     %>
-    <div class="admin-bar"><span class="fr">退出账户</span>
-        <a href="${pageContext.request.contextPath}/pages/admin/admin.jsp">管理员：admin 2012-06-19</a>
-    </div>
+
+    <c:if test="${empty sessionScope.user}">
+        <div class="admin-bar"><span class="fr">退出账户</span>
+            <a href="${pageContext.request.contextPath}/pages/admin/admin.jsp">
+                管理员：${sessionScope.user.userName} 2012-06-19
+            </a>
+        </div>
+    </c:if>
     <!--搜索横框-->
     <div class="search-box">
         <div class="sl">

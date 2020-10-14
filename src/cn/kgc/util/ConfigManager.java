@@ -3,7 +3,7 @@ package cn.kgc.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 public class ConfigManager {
     private static ConfigManager ourInstance;
@@ -17,6 +17,8 @@ public class ConfigManager {
     }
 
     private ConfigManager() {
+        String path = this.getClass().getResource("/").getPath();
+        System.out.println("============================" + path + "============================");
         String configFile = "application.properties";
         InputStream in = ConfigManager.class.getClassLoader().getResourceAsStream(configFile);
         ConfigManager.properties = new Properties();
@@ -40,10 +42,11 @@ public class ConfigManager {
         return properties.getProperty(key);
     }
 
-    public static void getAllProperties() {
-        properties.forEach((o, o2) -> {
-            System.out.println("key is " + o);
-            System.out.println("value is " + o2);
-        });
+    public static String getAllProperties() {
+        return properties.entrySet().stream().map(
+                objectObjectEntry -> "\"" + objectObjectEntry.getKey().toString() + "\"" +
+                        ":" +
+                        "\"" + objectObjectEntry.getValue().toString() + "\""
+        ).collect(Collectors.joining(",", "{", "}"));
     }
 }
